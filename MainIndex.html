@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Leftover Project | Turning Leftovers into Hope</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Embedded CSS -->
+    <style>
+        /* ============================================= */
+        /* GLOBAL STYLES & VARIABLES */
+        /* ============================================= */
+        :root {
+            --primary-color: #FADCB9; /* Pastel Orange */
+            --primary-color-dark: #F7931E; /* Original Orange for accents/hovers */
+            --secondary-color: #BBDDFB; /* Pastel Blue */
+            --secondary-color-dark: #4A90E2; /* Original Blue for accents/hovers */
+            --dark-color: #2C3E50; /* A deep, trustworthy blue-grey */
+            --light-color: #FDFEFE; /* A very light grey for backgrounds */
+            --text-color: #555;
+            --white-color: #FFFFFF;
+            --border-radius: 8px;
+            --transition-speed: 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--dark-color);
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color-dark);
+            transition: var(--transition-speed);
+        }
+
+        a:hover {
+            color: var(--secondary-color-dark);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .bg-light { background-color: var(--light-color); }
+        .bg-dark { background-color: var(--dark-color); color: var(--white-color); }
+        .bg-dark h2, .bg-dark h3, .bg-dark p { color: var(--white-color); }
+
+
+        /* ============================================= */
+        /* BUTTONS & UTILITIES */
+        /* ============================================= */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transition-speed);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color-dark);
+            color: var(--white-color);
+        }
+        .btn-primary:hover {
+            background-color: #E0841B;
+            color: var(--white-color);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color-dark);
+            color: var(--white-color);
+        }
+        .btn-secondary:hover {
+            background-color: #4281CB;
+            color: var(--white-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white-color);
+            border-color: var(--white-color);
+        }
+        .btn-outline:hover {
+            background-color: var(--white-color);
+            color: var(--dark-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-title h2 {
+            margin-bottom: 1rem;
+        }
+
+        /* ============================================= */
+        /* HEADER & NAVIGATION */
+        /* ============================================= */
+        #main-header {
+            background: var(--white-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        #main-header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color-dark);
+            border-bottom-color: var(--primary-color-dark);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            cursor: pointer;
+        }
+
+        /* ============================================= */
+        /* HERO SECTION */
+        /* ============================================= */
+        #hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/a2c579/333333?text=Food+Donation') no-repeat center center/cover;
+            height: 90vh;
+            min-height: 600px;
+            color: var(--white-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            margin-top: 70px; /* Offset for fixed header */
+        }
+
+        .hero-content h1 {
+            color: var(--white-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* ============================================= */
+        /* IMPACT SECTION (BUFFER ADDED) */
+        /* ============================================= */
+        #impact {
+            padding-top: 6rem;
+            background: var(--white-color);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat i {
+            font-size: 3rem;
+            color: var(--secondary-color-dark);
+            margin-bottom: 1rem;
+        }
+
+        .stat h3 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+        }
+
+        .stat p {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        /* ============================================= */
+        /* HOW IT WORKS SECTION */
+        /* ============================================= */
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .step {
+            background: var(--white-color);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #eee;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .step-icon {
+            background: var(--primary-color);
+            color: var(--dark-color);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* ============================================= */
+        /* ABOUT SECTION */
+        /* ============================================= */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        blockquote {
+            font-style: italic;
+            color: var(--dark-color);
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+        }
+
+        /* ============================================= */
+        /* DONATE SECTION (REPLACES GET INVOLVED) */
+        /* ============================================= */
+        #donate {
+            background-color: var(--light-color);
+        }
+        .donate-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white-color);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .donate-container i {
+            font-size: 3rem;
+            color: var(--primary-color-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .amount-btn {
+            background: var(--light-color);
+            border: 2px solid #eee;
+            padding: 1rem 0.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition-speed);
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .amount-btn:hover {
+            border-color: var(--primary-color);
+        }
+
+        .amount-btn.selected {
+            background: var(--primary-color);
+            border-color: var(--primary-color-dark);
+            color: var(--dark-color);
+        }
+        
+        .amount-btn .amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .amount-btn .impact {
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .custom-amount-wrapper {
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-amount-wrapper input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .recurring-donation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            gap: 0.5rem;
+        }
+
+
+        /* ============================================= */
+        /* PARTNERS SECTION */
+        /* ============================================= */
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .partner-logos img {
+            height: 50px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: var(--transition-speed);
+        }
+
+        .partner-logos img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* ============================================= */
+        /* FOOTER SECTION */
+        /* ============================================= */
+        #contact {
+            padding-top: 5rem;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .footer-about h3, .footer-links h3, .footer-subscribe h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white-color);
+            font-size: 1.2rem;
+            background: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color-dark);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+        }
+        .footer-links a:hover {
+            color: var(--white-color);
+            padding-left: 5px;
+        }
+
+        .subscribe-form {
+            display: flex;
+        }
+
+        .subscribe-form input {
+            flex-grow: 1;
+            padding: 12px;
+            border: none;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            outline: none;
+        }
+
+        .subscribe-form button {
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            border: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* ============================================= */
+        /* RESPONSIVE DESIGN */
+        /* ============================================= */
+        @media(max-width: 992px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .about-image {
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media(max-width: 768px) {
+            section { padding: 4rem 0; }
+
+            .menu-btn { display: block; }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--white-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+
+            #impact, .steps-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 576px) {
+            #impact, .steps-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            .hero-buttons .btn {
+                width: 80%;
+            }
+            .donation-amounts {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================= -->
+    <!-- HEADER & NAVIGATION BAR -->
+    <!-- ============================================= -->
+    <header id="main-header">
+        <nav class="container">
+            <a href="#" class="logo">The Leftover Project</a>
+            <ul class="nav-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#donate">Donate</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#donate" class="btn btn-primary">Donate</a>
+            <button id="menu-btn" class="menu-btn"><i class="fas fa-bars"></i></button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ============================================= -->
+        <!-- HERO SECTION -->
+        <!-- ============================================= -->
+        <section id="hero">
+            <div class="hero-content container">
+                <h1>Together, we turn leftovers into hope.</h1>
+                <p>We rescue perfectly good leftover food and deliver it to community members in need, fighting hunger and reducing waste.</p>
+                <div class="hero-buttons">
+                    <a href="#donate" class="btn btn-primary">Donate Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================= -->
+        <!-- IMPACT STATISTICS SECTION -->
+        <!-- ============================================= -->
+        <!-- <section id="impact" class="container">
+            <div class="stat">
+                <i class="fas fa-utensils"></i>
+                <h3 class="counter" data-target="15000">0</h3>
+                <p>Meals Served</p>
+            </div>
+            <div class="stat">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3 class="counter" data-target="250">0</h3>
+                <p>Active Volunteers</p>
+            </div>
+            <div class="stat">
+                <i class="fas fa-store"></i>
+                <h3 class="counter" data-target="50">0</h3>
+                <p>Restaurant Partners</p>
+            </div>
+            <div class="stat">
+                <i class="fas fa-weight-hanging"></i>
+                <h3 class="counter" data-target="20000">0</h3>
+                <p>Pounds of Food Rescued</p>
+            </div>
+        </section> -->
+
+        <!-- ============================================= -->
+        <!-- HOW IT WORKS SECTION -->
+        <!-- ============================================= -->
+        <section id="how-it-works" class="bg-light">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Simple, Effective Process</h2>
+                    <p>We make it easy to get good food to people who need it most.</p>
+                </div>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-icon"><i class="fas fa-store-alt"></i></div>
+                        <h3>1. Restaurants Donate</h3>
+                        <p>We partner with local restaurants, cafes, and stores to save their delicious, unsold surplus food.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon"><i class="fas fa-truck"></i></div>
+                        <h3>2. We Collect & Deliver</h3>
+                        <p>Our amazing volunteers spring into action, collecting the food and delivering it safely and quickly.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon"><i class="fas fa-users"></i></div>
+                        <h3>3. Community is Fed</h3>
+                        <p>We deliver the meals to local food banks and shelters, helping families, children, and seniors in our community.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================= -->
+        <!-- MISSION & STORYTELLING SECTION -->
+        <!-- ============================================= -->
+        <section id="about">
+            <div class="container about-container">
+                <div class="about-image">
+                    <img src="https://placehold.co/600x400/a2c579/333333?text=Our+Volunteers" alt="Volunteers sorting food donations" onerror="this.onerror=null;this.src='https://placehold.co/600x400/EFEFEF/AAAAAA&text=Image+Not+Found';">
+                </div>
+                <div class="about-text">
+                    <h2>Our Story is About Community</h2>
+                    <p>The Leftover Project was born from a simple observation: good food was being thrown away while our neighbors were going hungry. We knew we had to act. Our mission is driven by compassion, responsibility, and a genuine desire to make a difference.</p>
+                    <blockquote>
+                        "Every meal we share helps families, children, and seniors stay healthy and hopeful. It's more than just food; it's a message that someone cares."
+                    </blockquote>
+                    <a href="#" class="btn btn-secondary">Learn More About Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================= -->
+        <!-- DONATE SECTION -->
+        <!-- ============================================= -->
+        <section id="donate">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Give Hope Today</h2>
+                    <p>Your support is vital. Every donation, big or small, turns into a warm meal for someone in need.</p>
+                </div>
+                <div class="donate-container">
+                    <i class="fas fa-hand-holding-dollar"></i>
+                    <!-- <h3>Choose a Donation Amount</h3>
+                    <div class="donation-amounts">
+                        <button class="amount-btn" data-amount="10"><span class="amount">$10</span><br><span class="impact">Provides 5 meals</span></button>
+                        <button class="amount-btn selected" data-amount="25"><span class="amount">$25</span><br><span class="impact">Provides 12 meals</span></button>
+                        <button class="amount-btn" data-amount="50"><span class="amount">$50</span><br><span class="impact">Provides 25 meals</span></button>
+                        <button class="amount-btn" data-amount="100"><span class="amount">$100</span><br><span class="impact">Provides 50 meals</span></button>
+                    </div>
+                    <div class="custom-amount-wrapper">
+                        <input type="text" id="custom-amount" placeholder="Or enter a custom amount">
+                    </div>
+                    <div class="recurring-donation">
+                        <input type="checkbox" id="recurring">
+                        <label for="recurring">Make this a monthly donation</label>
+                    </div> -->
+                    <a href="#" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.2rem;">Donate Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================= -->
+        <!-- PARTNER SHOWCASE SECTION -->
+        <!-- ============================================= -->
+         
+        <!-- <section id="partners" class="bg-light">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Amazing Partners</h2>
+                    <p>We're grateful for the support of these community-minded businesses.</p>
+                </div>
+                <div class="partner-logos"> -->
+
+                    <!-- Placeholder logos -->
+
+                    <!-- <img src="https://placehold.co/150x80/cccccc/999999?text=Partner+Logo" alt="Partner Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x80/EFEFEF/AAAAAA&text=Image';">
+                    <img src="https://placehold.co/150x80/cccccc/999999?text=Partner+Logo" alt="Partner Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x80/EFEFEF/AAAAAA&text=Image';">
+                    <img src="https://placehold.co/150x80/cccccc/999999?text=Partner+Logo" alt="Partner Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x80/EFEFEF/AAAAAA&text=Image';">
+                    <img src="https://placehold.co/150x80/cccccc/999999?text=Partner+Logo" alt="Partner Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x80/EFEFEF/AAAAAA&text=Image';">
+                    <img src="https://placehold.co/150x80/cccccc/999999?text=Partner+Logo" alt="Partner Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x80/EFEFEF/AAAAAA&text=Image';">
+                </div>
+            </div>
+        </section> -->
+
+    </main>
+
+    <!-- ============================================= -->
+    <!-- FOOTER SECTION -->
+    <!-- ============================================= -->
+    <footer id="contact" class="bg-dark">
+        <div class="container footer-container">
+            <div class="footer-about">
+                <h3>The Leftover Project</h3>
+                <p>Fighting hunger and reducing food waste through community action.</p>
+                <!-- <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div> -->
+                <div class="email">
+                    <p><strong>Email:</strong> <a href="https://mail.google.com/mail/u/0/?fs=1&to=theleftoverproject1@gmail.com&tf=cm" target="_blank">theleftoverproject1@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#donate">Donate</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                </ul>
+            </div>
+            <div class="footer-subscribe">
+                <h3>Stay Updated</h3>
+                <p>Join our newsletter for stories, news, and event updates.</p>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 The Leftover Project. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // ============================================= //
+            // MOBILE NAVIGATION TOGGLE
+            // ============================================= //
+            const menuBtn = document.getElementById('menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close mobile menu when a link is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+
+            // ============================================= //
+            // ANIMATED COUNTERS ON SCROLL
+            // ============================================= //
+            const counters = document.querySelectorAll('.counter');
+            const impactSection = document.getElementById('impact');
+
+            const startCounter = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const increment = target / 200; // Speed of the counter
+
+                const updateCount = () => {
+                    if (count < target) {
+                        count += increment;
+                        counter.innerText = Math.ceil(count).toLocaleString();
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        counter.innerText = target.toLocaleString();
+                    }
+                };
+                updateCount();
+            };
+
+            const observerOptions = {
+                root: null, // viewport
+                threshold: 0.5 // Trigger when 50% of the element is visible
+            };
+
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !impactSection.classList.contains('animated')) {
+                        counters.forEach(startCounter);
+                        impactSection.classList.add('animated');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            if (impactSection) {
+                counterObserver.observe(impactSection);
+            }
+
+            // ============================================= //
+            // DONATION WIDGET LOGIC
+            // ============================================= //
+            const amountBtns = document.querySelectorAll('.amount-btn');
+            const customAmountInput = document.getElementById('custom-amount');
+
+            amountBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    amountBtns.forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    customAmountInput.value = '';
+                });
+            });
+            
+            if(customAmountInput) {
+                customAmountInput.addEventListener('input', () => {
+                    amountBtns.forEach(b => b.classList.remove('selected'));
+                });
+            }
+
+
+            // ============================================= //
+            // ACTIVE NAVIGATION LINK ON SCROLL
+            // ============================================= //
+            const sections = document.querySelectorAll('section[id]');
+            const navLi = document.querySelectorAll('#main-header nav .nav-links li a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= (sectionTop - 71)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLi.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href') === `#${current}`) {
+                        a.classList.add('active');
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
